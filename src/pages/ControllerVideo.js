@@ -83,54 +83,57 @@ const ContainerInfo = styled.div`
     }
 `;
 
-function Media(props) {
+function ControllerVideo({ aula, class_id, play=false, handlePlay=null }) {
     const [progress, setProgress] = useState(80);
-  const { loading = false } = props;
-  const classes = useStyles();
-  const [play, setPlay] = useState(false);
+    //const [play, setPlay] = useState(false);
 
-  return (
-    <Card className={classes.card}>
-        {loading ? (
-            <Skeleton animation="wave" variant="rect" className={classes.media} />
-        ) : (
-            <CardBanner className={classes.media} play={play}>
-                <p>1</p>
-            </CardBanner>
-        )}
+    const loading = false; // localStorage
+    const classes = useStyles();
 
-      <CardContent>
-        {loading ? (
-          <CardContentContainer>
-            <Skeleton animation="wave" height={10} style={{ marginBottom: 6 }} />
-            <Skeleton animation="wave" height={10} style={{ marginBottom: 6 }} />
-            <Skeleton animation="wave" height={10} width="80%" />
-          </CardContentContainer>
-        ) : (
-          <CardContentContainer>
-                <div style={{ display: 'flex' }}>
-                    <PlayButton play={play} onClick={() => setPlay(!play)} />
-                    <ContainerInfo>
-                        <p><b>Nome da Aula</b></p>
-                        <p>00:21</p>
-                    </ContainerInfo>
-                </div>
+    return (
+        <Card className={classes.card}>
+            {loading ? (
+                <Skeleton animation='wave' variant='rect' className={classes.media} />
+            ) : (
+                <CardBanner className={classes.media} play={play}>
+                    <p style={{ padding: 0, margin: 0 }}>
+                        {class_id+1}
+                    </p>
+                </CardBanner>
+            )}
 
-                <div className={classes.root}>
-                    <LinearProgress variant="determinate" value={progress} color={play ? 'primary' : 'secondary'} />
-                </div>
-          </CardContentContainer>
-        )}
-      </CardContent>
-    </Card>
-  );
+            <CardContent>
+                {loading ? (
+                    <CardContentContainer>
+                        <Skeleton animation='wave' height={10} style={{ marginBottom: 6 }} />
+                        <Skeleton animation='wave' height={10} style={{ marginBottom: 6 }} />
+                        <Skeleton animation='wave' height={10} width='80%' />
+                    </CardContentContainer>
+                ) : (
+                    <CardContentContainer>
+                            <div style={{ display: 'flex', paddingBottom: 2 }}>
+                                <PlayButton play={play} onClick={handlePlay} />
+                                <ContainerInfo>
+                                    <p><b>{aula.name}</b></p>
+                                    <p>00:21</p>
+                                </ContainerInfo>
+                            </div>
+
+                            <LinearProgress variant='determinate' value={progress} color={play ? 'primary' : 'secondary'} />
+                    </CardContentContainer>
+                )}
+            </CardContent>
+        </Card>
+    );
 }
 
-export default function Facebook() {
-  return (
-    <div>
-      <Media loading />
-      <Media />
-    </div>
-  );
-}
+export default ControllerVideo;
+
+/*export default function Preview() {
+    return (
+        <div>
+            <Media loading />
+            <Media />
+        </div>
+    );
+}*/
