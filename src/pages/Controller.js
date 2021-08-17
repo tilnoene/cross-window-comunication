@@ -69,7 +69,9 @@ const Controller = () => {
     
     /* fazer:
         integrar loadingClass com localStorage
-        
+        testar comunicação bidirecional
+        implementar loading "inteligente" (tempo total e tempo atual?)
+        mais informações?
     */
 
     const { room_id } = useParams();
