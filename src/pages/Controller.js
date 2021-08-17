@@ -65,8 +65,12 @@ const MediaButton = ({ children, play=true, onClick=null }) => {
 
 const Controller = () => {
     const [loading, setLoading] = useState(true); // carregamento dos dados do localStorage sobre a aula
-    const [loadingContent, setLoadingContent] = useState(true); // carregamento da aula
+    const [loadingClass, setloadingClass] = useState(true); // carregamento da aula
     
+    /* fazer:
+        integrar loadingClass com localStorage
+        
+    */
 
     const { room_id } = useParams();
     const aulas = [
@@ -139,7 +143,7 @@ const Controller = () => {
                         class_id={index}
                         play={play[index]}
                         handlePlay={() => handlePlay(index)}
-                        loading={loading && loadingContent}
+                        loading={!(loading && loadingClass)}
                     />)
                 }
                 {/*<ControllerVideo />

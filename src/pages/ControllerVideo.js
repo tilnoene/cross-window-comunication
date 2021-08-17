@@ -83,11 +83,10 @@ const ContainerInfo = styled.div`
     }
 `;
 
-function ControllerVideo({ aula, class_id, play=false, handlePlay=null }) {
+function ControllerVideo({ aula, class_id, loading, play=false, handlePlay=null }) {
     const [progress, setProgress] = useState(80);
     //const [play, setPlay] = useState(false);
 
-    const loading = false; // localStorage
     const classes = useStyles();
 
     return (
