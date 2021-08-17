@@ -2,6 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
 
+import PlayArrowIcon from '@material-ui/icons/PlayArrow';
+import ControllerVideo from './ControllerVideo';
+
 const Container = styled.div`
     width: 100vw;
     height: 100vh;
@@ -67,6 +70,13 @@ const Controller = () => {
         //console.log(tmp);
         localStorage.setItem(`${room_id}_${class_id}_play`, tmp[class_id]);
     }
+
+    return (
+        <Container>
+            <PlayArrowIcon>oi</PlayArrowIcon>
+            <ControllerVideo />
+        </Container>
+    );
 
     return (
         <Container>
